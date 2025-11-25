@@ -1,3 +1,6 @@
+!pip install joblib
+
+import streamlit as st.py
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -304,4 +307,5 @@ else:
                 - El fichero descargable permite seguir trabajando en Excel/Power BI/Tableau.
                 - Así puedes cruzar el sentimiento con producto, país, canal, etc.
                 """)
+
 
