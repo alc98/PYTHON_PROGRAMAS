@@ -1,11 +1,13 @@
-!pip install joblib
+pip install streamlit joblib scikit-learn pandas numpy matplotlib
 
-import streamlit as st.py
+# app.py
+
 import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
 from pathlib import Path
+import matplotlib.pyplot as plt
 
 # =========================
 # CONFIGURACIÓN BÁSICA
@@ -247,7 +249,6 @@ else:
                     df["help_ratio"] = df["help_num"] / (df["help_den"] + 1.0)
 
                 # Seleccionamos sólo las columnas que espera el modelo
-                # 🔴 AJUSTA ESTO A TU PIPELINE:
                 cols_for_model = [
                     "full_text",
                     "review_len_chars",
@@ -276,14 +277,10 @@ else:
                 # Resumen agregados para negocio
                 st.markdown("### 📊 Resumen de sentimiento")
                 st.write(df["sentiment_label"].value_counts())
-
                 st.bar_chart(df["sentiment_label"].value_counts())
 
                 if proba_pos is not None:
                     st.markdown("### Distribución de probabilidad de clase positiva")
-                    st.histogram = st.pyplot  # Para no romper si no hay figura previa
-                    import matplotlib.pyplot as plt
-
                     fig, ax = plt.subplots()
                     ax.hist(proba_pos, bins=20)
                     ax.set_xlabel("Probabilidad de review positiva")
@@ -307,5 +304,6 @@ else:
                 - El fichero descargable permite seguir trabajando en Excel/Power BI/Tableau.
                 - Así puedes cruzar el sentimiento con producto, país, canal, etc.
                 """)
+
 
 
